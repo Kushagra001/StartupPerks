@@ -22,9 +22,11 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/startup-ben
 const dealsRoutes = require('./routes/deals');
 const authRoutes = require('./routes/auth');
 const claimsRoutes = require('./routes/claims');
+const seedRoutes = require('./routes/seed');
 app.use('/api/deals', dealsRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/claims', claimsRoutes);
+app.use('/api/seed', seedRoutes);
 
 // Health Check
 app.get('/', (req, res) => {
