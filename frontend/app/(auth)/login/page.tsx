@@ -32,12 +32,12 @@ export default function LoginPage() {
             });
             const data = await res.json();
 
-            if (!res.ok) throw new Error(data.message || 'Login failed');
+            if (!res.ok) throw new Error(data.error || data.message || 'Login failed');
 
             localStorage.setItem('token', data.token);
             router.push('/dashboard');
         } catch (err: any) {
-            setError(err.message);
+            setError(err.message || 'Server error');
         } finally {
             setLoading(false);
         }
